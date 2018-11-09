@@ -64,14 +64,23 @@ class App extends Component {
       ]
     }
   }
+
+  handleNewCat(newcat) {
+    let { cats } = this.state
+    cats = cats.push(newcat)
+    this.setState({
+      cats: cats
+    })
+  }
+
   render() {
     return (
       <div className="App">
         <Header />
             <Router>
                 <Switch>
-                    <Route exact path="/cats" render={(props) => <Cats cats={this.state.cats}/>} />
-                    <Route exact path="/" component={NewCat} />
+                    <Route exact path="/" render={(props) => <Cats cats={this.state.cats}/>} />
+                    <Route exact path="/newcat" render={(props) => <NewCat newcat={this.handleNewCat}/>} />
                 </Switch>
             </Router>
       </div>
