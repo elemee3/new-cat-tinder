@@ -6,6 +6,8 @@ import Cats from './pages/Cats';
 import NewCat from './pages/NewCat';
 import Header from './pages/Header';
 
+import { getCats } from './api';
+
 import Erebus from './kittypics/erebus.jpg';
 import Kris from './kittypics/kris.jpg';
 import G1 from './kittypics/g1.jpeg';
@@ -18,51 +20,17 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      cats: [
-        {
-          id: 0,
-          name: 'Erebus',
-          age: 3,
-          enjoys: 'darkness',
-          image: Erebus
-        },
-        {
-          id: 1,
-          name: 'Kris',
-          age: 1,
-          enjoys: 'fucking meowing',
-          image: Kris
-        },
-        {
-          id: 2,
-          name: 'G',
-          age: 5,
-          enjoys: 'hunting',
-          image: G1
-        },
-        {
-          id: 3,
-          name: 'Cupcake',
-          age: 11,
-          enjoys: 'domination',
-          image: Cupcake
-        },
-        {
-          id: 4,
-          name: 'Dre',
-          age: 2,
-          enjoys: 'love',
-          image: Dre2
-        },
-        {
-          id: 5,
-          name: 'Snoop',
-          age: 2,
-          enjoys: 'snuggles',
-          image: Snoop2
-        }
-      ]
+      cats: []
     }
+  }
+
+  componentWillMount() {
+    getCats()
+    .then(APIcats => {
+      this.setState({
+        cats: APIcats
+      })
+    })
   }
 
   handleNewCat(newcat) {
@@ -79,8 +47,8 @@ class App extends Component {
         <Header />
             <Router>
                 <Switch>
-                    <Route exact path="/" render={(props) => <Cats cats={this.state.cats}/>} />
-                    <Route exact path="/newcat" render={(props) => <NewCat newcat={this.handleNewCat}/>} />
+                    <Route exact path="/cats" render={(props) => <Cats cats={this.state.cats}/>} />
+                    <Route exact path="/cats/new" render={(props) => <NewCat newcat={this.handleNewCat}/>} />
                 </Switch>
             </Router>
       </div>

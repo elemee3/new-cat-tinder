@@ -20,21 +20,44 @@ class NewCat extends Component {
     this.setState({form: form})
   }
 
+  handleSubmit(event){
+    event.preventDefault()
+    this.handleNewCat(event)
+  }
+
+  handleNewCat(newCat){
+    
+  }
+
   render() {
     return (
       <div className="App">
-        <FormControl
-          type="text"
-          name="name"
-          placeholder="Enter Name Here"
-          onChange={this.handleChange.bind(this)}
-          value={this.state.form.name}
-        /><br/>
-        <FormControl name="Age" type="text" placeholder="Enter Age Here" onChange={this.handleChange.bind(this)}
-        value={this.state.form.age}/><br/>
-        <FormControl name="enjoys" type="text" placeholder="Enter Activities Here" onChange={this.handleChange.bind(this)}
-        value={this.state.form.enjoys}/><br/>
-        <FormControl type="submit" value="Add New Cat" />
+          <FormControl
+            type="text"
+            name="name"
+            placeholder="Enter Name Here"
+            onChange={this.handleChange.bind(this)}
+            value={this.state.form.name}
+          /><br/>
+          <FormControl
+            name="Age"
+            type="text"
+            placeholder="Enter Age Here"
+            onChange={this.handleChange.bind(this)}
+            value={this.state.form.age}
+          /><br/>
+          <FormControl
+            name="enjoys"
+            type="text"
+            placeholder="Enter Activities Here"
+            onChange={this.handleChange.bind(this)}
+            value={this.state.form.enjoys}
+          /><br/>
+          <FormControl
+            type="submit"
+            value="Add New Cat"
+            onClick={this.handleSubmit.bind(this)}
+          />
       </div>
     );
   }
