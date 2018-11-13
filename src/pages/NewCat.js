@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import '../App.css';
-import { FormControl } from 'react-bootstrap';
 
 class NewCat extends Component {
   constructor(props){
@@ -26,38 +25,18 @@ class NewCat extends Component {
   }
 
   handleNewCat(newCat){
-    
+
   }
 
   render() {
     return (
       <div className="App">
-          <FormControl
-            type="text"
-            name="name"
-            placeholder="Enter Name Here"
-            onChange={this.handleChange.bind(this)}
-            value={this.state.form.name}
-          /><br/>
-          <FormControl
-            name="Age"
-            type="text"
-            placeholder="Enter Age Here"
-            onChange={this.handleChange.bind(this)}
-            value={this.state.form.age}
-          /><br/>
-          <FormControl
-            name="enjoys"
-            type="text"
-            placeholder="Enter Activities Here"
-            onChange={this.handleChange.bind(this)}
-            value={this.state.form.enjoys}
-          /><br/>
-          <FormControl
-            type="submit"
-            value="Add New Cat"
-            onClick={this.handleSubmit.bind(this)}
-          />
+        <form className="New-Cat-Form">
+          Name: <input name="name" type="text" placeholder="Enter Name Here" onChange={this.handleChange.bind(this)} value={this.state.form.name} /><br />
+          Age: <input name="age" type="number" placeholder="Enter Age Here" onChange={this.handleChange.bind(this)} value={this.state.form.age} /><br />
+          Enjoys: <input name="enjoys" type="text" placeholder="Enter Activities Here" onChange={this.handleChange.bind(this)} value={this.state.form.enjoys} /><br />
+          <input type="submit" value="Add New Cat" onClick={this.handleSubmit.bind(this)} /><br />
+        </form>
       </div>
     );
   }
